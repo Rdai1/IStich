@@ -1,0 +1,18 @@
+[
+  {
+    "Service": "hem",
+    "Price": 10.99
+  },
+  {
+    "Service": "replace button",
+    "Price": 10
+  },
+  {
+    "Service": "Adjust Waist",
+    "Price": 10
+  },
+  {
+    "Service": "Fix/Replace Zipper",
+    "Price": 10
+  }
+]
