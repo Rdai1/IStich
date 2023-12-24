@@ -9,7 +9,7 @@ namespace IStichIt.Pages
     {
         private readonly ILogger<IndexModel> _logger;
         public GetServices Service;
-        public IEnumerable<Models.Services> Services { get; private set; }
+        public IEnumerable<Models.Services> ServicesList { get; private set; }
 
         public IndexModel(ILogger<IndexModel> logger, GetServices serv)
         {
@@ -19,7 +19,7 @@ namespace IStichIt.Pages
 
         public void OnGet()
         {
-            Services = Service.GetServicesList();
+            ServicesList = Service.GetServicesList();
         }
     }
 }

@@ -1,14 +1,30 @@
 ﻿using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace IStichIt.Models
 {
+    public class Service
+    {
+        public string Name { get; set; }
+        public decimal Price { get; set; }
+        public string Description { get; set; }
+        public string Img { get; set; }
+    }
+
+    public class Category
+    {
+        [JsonPropertyName("Services")]
+        public Dictionary<string, Service> Services { get; set; }
+    }
+
     public class Services
     {
+        [JsonPropertyName("Category")]
+        public string Category { get; set; }
 
-        public string Service { get; set; }
-        public float Price { get; set; }
-        //public string Image { get; set; }
+        [JsonPropertyName("Services")]
+        public Dictionary<string, Service> ServicesData { get; set; }
 
-        public override string ToString() => JsonSerializer.Serialize<Services>(this);
     }
+
 }
