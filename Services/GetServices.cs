@@ -1,5 +1,7 @@
 ﻿using IStichIt.Models;
+using Microsoft.Extensions.Options;
 using System.Text.Json;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace IStichIt.Services
 {
@@ -17,11 +19,20 @@ namespace IStichIt.Services
         public IEnumerable<Models.Services> GetServicesList()
         {
             using var jsonFileReader = File.OpenText(JsonFileName);
-            return JsonSerializer.Deserialize<Models.Services[]>(jsonFileReader.ReadToEnd(),
+            var jsonString = jsonFileReader.ReadToEnd();
+
+            var serviceList = JsonSerializer.Deserialize<List<Models.Services>>(jsonString,
                 new JsonSerializerOptions
                 {
                     PropertyNameCaseInsensitive = true
                 });
+
+            foreach (var service in serviceList) {
+                System.Diagnostics.Debug.WriteLine(service.Category);
+            }
+
+            return serviceList;
         }
+
     }
 }
