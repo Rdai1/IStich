@@ -9,22 +9,18 @@
 
     <!-- Item Heading -->
     <h1 class="my-4">
-        Page Heading
-        <small>Secondary Text</small>
+        @PageContext.RouteData.Values["key"]
     </h1>
 
     <!-- Item Row -->
     <div class="row">
 
         <div class="col-md-8">
-            <h3 class="my-3">Title</h3>
-            <p>Description</p>
-            <h3 class="my-3">Location</h3>
-            <ul>
-                <li>Address.City</li>
-                <li>Address.State</li>
-                <li>ClubCategory</li>
-            </ul>
+            @foreach (var s in Model.ServicesList)
+            {
+                <h3 class="my-3">@s.Name</h3>
+                <p>@s.Description</p>
+            }
         </div>
 
         <div class="col-md-4">
