@@ -1,0 +1,77 @@
+﻿@using IStitch.ViewModels
+@model CustomerItemViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div class="navbar-container">
+</div>
+<div class="main-container">
+    <section class="space-sm">
+        <div class="container">
+            <div class="row mb-5">
+                <!--end of col-->
+            </div>
+            <!--end of row-->
+            <div class="row flex-md-row card card-md">
+                <div class="card-body bg-secondary">
+                    <div class="text-center mb-5">
+                        <h1 class="h2 mb-2">Create a Service Order</h1>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-6 col-lg-5">
+                            <form method="post" asp-action="Create" enctype="multipart/form-data">
+                                @* <input type="hidden" id="AppUserId" name="AppUserId" asp-for="AppUserId" /> *@
+                                <div class="form-row form-group">
+                                    <div class="form-row form-group">
+                                        <div class="col">
+                                            <input asp-for="PhoneNumber" class="form-control form-control-lg" placeholder="Customer Phone Number" />
+                                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <select asp-for="CategoryName" class="form-control form-control-lg">
+                                            <option>--Select--</option>
+                                            @foreach (var serviceType in Model.ServicesTypeCategoryList)
+                                            {
+                                                <option value="@serviceType.Category">@serviceType.Category</option>
+                                            }
+                                        </select>
+                                        <span asp-validation-for="CategoryName" class="text-danger"></span>
+                                    </div>
+                                    <div class="col" id="serviceDropdownContainer">
+                                        <partial name="_ServiceDropdownPartial" for="ServiceNameList"></partial>
+                                    </div>
+                                </div>
+                                <div class="form-row form-group">
+                                    <div class="col">
+                                        <input asp-for="ItemDescription" class="form-control form-control-lg" placeholder="Description" />
+                                        <span asp-validation-for="ItemDescription" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="PickUpDate" class="control-label"></label>
+                                    <input asp-for="PickUpDate" class="form-control" type="date" />
+                                    <span asp-validation-for="PickUpDate" class="text-danger"></span>
+                                </div>
+                                <div class="form-row form-group">
+                                    <div class="col">
+                                        <button class="btn btn-block btn-success btn-lg" type="submit">Create Service Order</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end of container-->
+    </section>
+    <!--end of section-->
+</div>
+
+@section Scripts {
+    <script src="~/js/getServices.js" asp-append-version="true"></script>
+}

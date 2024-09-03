@@ -1,0 +1,24 @@
+﻿@using IStitch.ViewModels
+@model CustomerItemViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<select asp-for="SerName" class="form-control form-control-lg">
+    <option value="">-- Select Service --</option>
+    @if (Model != null && Model.ServiceNameList != null)
+    {
+        @foreach (var service in Model.ServiceNameList)
+        {
+            <option value="@service.ServiceName">@service.ServiceName</option>
+        }    
+    }
+    else
+    {
+        <option value="">Please Select a Category Above! ^^</option>
+    }
+
+</select>
+<span asp-validation-for="SerName" class="text-danger"></span>

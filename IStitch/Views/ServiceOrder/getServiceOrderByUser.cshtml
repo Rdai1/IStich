@@ -1,0 +1,31 @@
+﻿@using IStitch.ViewModels
+@model IEnumerable<CustomerItems>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/ServiceOrderList.css" asp-append-version="true" />
+</head>
+<div class="d-flex justify-content-center">
+    <div class="col-6 col-lg-5 pb-4">
+        <div class="form-group">
+            <input id="PhoneNumber" name="PhoneNumber" class="form-control" placeholder="Enter Customer Phone Number" />
+        </div>
+        <div class="form-row form-group">
+            <div class="col">
+                <button class="btn btn-block btn-success btn-lg" onclick="getItems()">Get Service Orders</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col" id="Container">
+    <partial name="_itemList" for="@Model"></partial>
+</div>
+
+@section Scripts {
+    <script src="~/js/getItems.js" asp-append-version="true"></script>
+}
