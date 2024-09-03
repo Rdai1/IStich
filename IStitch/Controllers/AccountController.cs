@@ -80,7 +80,8 @@ namespace IStitch.Controllers
                 Email = registerViewModel.Email,
                 UserName = registerViewModel.Email,
                 fName = registerViewModel.fName,
-                lName = registerViewModel.lName
+                lName = registerViewModel.lName,
+                PhoneNumber = registerViewModel.PhoneNumber
             };
             var newUserResponse = await _userManager.CreateAsync(newUser, registerViewModel.Password);
 

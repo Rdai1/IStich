@@ -22,5 +22,7 @@ namespace IStitch.ViewModels
         [Compare("Password", ErrorMessage = "Passwords do not match")]
         public string ConfirmPassword { get; set; }
 
+        [Required]
+        public string PhoneNumber { get; set; }
     }
 }
